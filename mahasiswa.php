@@ -1,13 +1,7 @@
-<?php 
+<?php
 include 'template/header.php';
 include 'template/side.php';
-
-$servername = "localhost";
-$database = "db_mahasiswa";
-$username = "root";
-$password = "";
-
-$conn = mysqli_connect($servername, $username, $password, $database);
+require 'koneksi.php';
 
 $query = "SELECT * FROM mahasiswa JOIN prodi ON mahasiswa.id_prodi = prodi.id_prodi";
 $hasil = mysqli_query($conn, $query);
@@ -18,107 +12,102 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
 }
 
 ?>
- 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Mahasiswa</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active"></li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Data Mahasiswa</h3>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Data Mahasiswa</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active"></li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Data Mahasiswa</h3>
 
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
+              <div class="card-tools">
+              <div class="card-tools">
+              <a href="tambahmahasiswa.php" class="btn btn-primary">Tambah</a>
                 </div>
               </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>NIM</th>
-                      <th>Nama</th>
-                      <th>Prodi</th>
-                      <th>No Handphone</th>
-                      <th>Alamat</th>
-                      <th>Foto</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>prodi</th>
+                    <th>No Handphone</th>
+                    <th>Alamat</th>
+                    <th>Foto</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
                   <?php
+                  $i = 1;
                   foreach ($data as $d) {
                   ?>
                     <tr>
-                      <td></td>
+                      <td><?php echo $i++ ?></td>
                       <td><?php echo $d['nim'] ?></td>
                       <td><?php echo $d['nama'] ?>
                       <td><?php echo $d['nama_prodi'] ?>
                       <td><?php echo $d['no_hp'] ?>
                       <td><?php echo $d['alamat'] ?></td>
-                      <td><?php echo $d['foto'] ?></td>
-                      <td><a href="" class="btn btn-warning" >Edit</a>
-                    <a href="" class="btn btn-danger" >Hapus</a>
+                      <td> <img src="dist/img/<?php echo $d['foto'] ?>" width="50px" height="50px" /> </td>
+                      <td><a href="editmahasiswa.php?nim=<?= $d['nim'] ?>" class="btn btn-warning" >Edit</a>
+                    <a href="hapusmahasiswa.php?nim=<?= $d['nim'] ?>" class="btn btn-danger" >Hapus</a>
                     </td>
                     </tr>
                   <?php } ?>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                </tbody>
+              </table>
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
           </div>
+          <!-- /.card -->
+        </div>
         <!-- /.row -->
         <!-- Main row -->
-       
+
         <!-- /.row (main row) -->
       </div>
-        <!-- /.row -->
-        <!-- Main row -->
-       
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
- 
+      <!-- /.row -->
+      <!-- Main row -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+      <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -157,4 +146,5 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 </body>
+
 </html>
