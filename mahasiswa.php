@@ -1,7 +1,9 @@
 <?php
+session_start();
 include 'template/header.php';
 include 'template/side.php';
 require 'koneksi.php';
+ceklogin();
 
 $query = "SELECT * FROM mahasiswa JOIN prodi ON mahasiswa.id_prodi = prodi.id_prodi";
 $hasil = mysqli_query($conn, $query);
@@ -56,7 +58,7 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
                     <th>No</th>
                     <th>NIM</th>
                     <th>Nama</th>
-                    <th>prodi</th>
+                    <th>Prodi</th>
                     <th>No Handphone</th>
                     <th>Alamat</th>
                     <th>Foto</th>

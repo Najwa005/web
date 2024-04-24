@@ -11,7 +11,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/fallen.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/najwa.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"></a>
@@ -36,7 +36,6 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
          
-          <li class="nav-header">Contoh</li>
           <li class="nav-item">
             <a href="index.php" class="nav-link">
             <i class="nav-icon fa-regular fa-address-book"></i>
