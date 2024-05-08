@@ -3,6 +3,9 @@ session_start();
 require 'koneksi.php';
 ceklogin();
 
+include 'template/header.php';
+include 'template/side.php';
+
 $nim = $_POST['nim'];
 $nama = $_POST['nama'];
 $prodi = $_POST['prodi'];

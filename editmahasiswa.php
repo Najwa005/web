@@ -1,5 +1,8 @@
 <?php
 require 'koneksi.php';
+ceklogin();
+cekadmin();
+
 include 'template/header.php';
 include 'template/side.php';
 

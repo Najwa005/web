@@ -2,9 +2,11 @@
   session_start();
   require 'koneksi.php';
   ceklogin();
+  cekadmin();
   
   include 'template/header.php';
   include 'template/side.php';
+  
   ?>
 
   <!-- Content Wrapper. Contains page content -->

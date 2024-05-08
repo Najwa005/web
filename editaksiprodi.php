@@ -2,6 +2,11 @@
 session_start();
 require 'koneksi.php';
 ceklogin();
+cekadmin();
+
+include 'template/header.php';
+include 'template/side.php';
+
 $id =$_POST['id_prodi'];
 $prodi = $_POST['namaprodi'];
 

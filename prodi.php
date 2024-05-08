@@ -1,9 +1,10 @@
 <?php
-include 'template/header.php';
-include 'template/side.php';
 session_start();
 require 'koneksi.php';
 ceklogin();
+
+include 'template/header.php';
+include 'template/side.php';
 
 $query = "SELECT * FROM prodi";
 $hasil = mysqli_query($conn, $query);
@@ -46,8 +47,9 @@ while ($baris = mysqli_fetch_assoc($hasil))
               <h3 class="card-title">Data Program Studi</h3>
 
              <div class="card-tools">
+              <?php if($_SESSION ['hakakses'] == 'admin') : ?>
               <a href="tambahprodi.php" class="btn btn-primary">Tambah</a>
-
+              <?php endif; ?>
              </div>
             </div>
             <!-- /.card-header -->
@@ -67,8 +69,11 @@ while ($baris = mysqli_fetch_assoc($hasil))
                   <tr>
                     <td><?php echo $d['id_prodi']?></td>
                     <td><?php echo $d['nama_prodi']?></td>
-                    <td><a href="editprodi.php?id_prodi=<?= $d['id_prodi'] ?>" class="btn btn-warning">Edit</a>
-                    <a href="hapusprodi.php?id_prodi=<?= $d['id_prodi'] ?>" class="btn btn-danger">Hapus</a>
+                    <td>
+                      <?php if ($_SESSION['hakakses'] == 'admin') : ?>
+                      <a href="editprodi.php?id_prodi=<?= $d['id_prodi'] ?>" class="btn btn-warning">Edit</a>
+                      <a href="hapusprodi.php?id_prodi=<?= $d['id_prodi'] ?>" class="btn btn-danger">Hapus</a>
+                      <?php endif; ?>
                   </td>
                   </tr>
                   <?php

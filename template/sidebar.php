@@ -10,14 +10,12 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/ <?= $_SESSION['foto']; ?> class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/<?= $_SESSION['foto']; ?>class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?= $_SESSION['nama']; ?></a>
         </div>
       </div>
-
-      
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -35,6 +33,7 @@
               </p>
             </a>
           </li>
+          <?php if ($_SESSION['hakakses']=='admin') { ?>
           <li class="nav-item">
             <a href="mahasiswa.php" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
@@ -44,6 +43,7 @@
               </p>
             </a>
           </li>
+          <?php } ?>
           <li class="nav-item">
             <a href="prodi.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
